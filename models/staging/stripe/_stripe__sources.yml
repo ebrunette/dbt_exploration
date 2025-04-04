@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+    - name: stripe
+      description: This is a replica of the Stripe orders used by our app. 
+      database: raw
+      schema: stripe
+      tables:
+          - name: payment
+            description: The payments made in the system. 
