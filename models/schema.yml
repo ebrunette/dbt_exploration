@@ -32,7 +32,7 @@ models:
           - not_null
 
   - name: stg_jaffle_shop__orders
-    description: This model cleans up order data
+    description: This model cleans up order data. One order per row.
     columns:
       - name: order_id
         description: Primary key
@@ -40,6 +40,7 @@ models:
           - unique
           - not_null
       - name: status
+        description: "{{ doc("order_status") }}"
         tests:
           - accepted_values:
               values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
@@ -63,6 +64,7 @@ models:
           - accepted_values:
               values: ['bank_transfer', 'coupon', 'credit_card', 'gift_card']
       - name: status
+        description: The status for each of these orders.
         tests:
           - not_null
           - accepted_values:
